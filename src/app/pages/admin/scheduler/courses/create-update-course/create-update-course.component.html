@@ -1,0 +1,62 @@
+<div class="content">
+    <div *nzModalTitle>
+        <span>{{
+            (isUpdate ? "action.update" : "action.create") | translate
+            }}</span>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="form">
+                <div class="col-12 mb-4">
+                    <label>{{ "model.scheduler.name" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="name" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('name')?.touched || form.get('name')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('name')?.hasError('required')">
+                            <mb-not-blank [value]="'model.scheduler.name'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+                <div class="col-12 mb-4">
+                    <label>{{ "model.scheduler.maxStudent" | translate }}
+                        <span class="text-danger">*</span></label>
+                    <nz-input-number formControlName="maxNumbOfStudents" [nzMin]="5" [nzStep]="10" class="ms-3 product-property">
+                    </nz-input-number>
+                    <ng-container *ngIf="form.get('maxNumbOfStudents')?.touched || form.get('maxNumbOfStudents')?.dirty">
+                        <span class="text-danger ms-2" *ngIf="form.get('maxNumbOfStudents')?.hasError('required')">
+                            <mb-not-blank [value]="'model.scheduler.maxStudent'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+                <div class="col-12 mb-4">
+                    <label>{{ "model.scheduler.module" | translate }}
+                        <span class="text-danger">*</span></label>
+                    <nz-select formControlName="module_id" nzShowSearch nzAllowClear="true"
+                        class="ms-3 product-property">
+                        <ng-container *ngFor="let type of modules">
+                            <nz-option [nzValue]="type.id"
+                                [nzLabel]="type.name | translate">
+                            </nz-option>
+                        </ng-container>
+                    </nz-select>
+                    <ng-container *ngIf="form.get('module_id')?.touched || form.get('module_id')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('module_id')?.hasError('required')">
+                            <mb-not-blank [value]="'model.scheduler.module'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center" *nzModalFooter>
+        <button nz-button nzType="default" class="e-2" (click)="onCancel()">
+            {{ "action.cancel" | translate }}
+        </button>
+        <button nz-button nzType="primary" [disabled]="form.invalid" (click)="onSubmit()">
+            {{ (isUpdate ? "action.save" : "action.save") | translate }}
+        </button>
+    </div>
+</div>

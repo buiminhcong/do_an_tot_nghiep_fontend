@@ -1,0 +1,121 @@
+<div class="content">
+    <mb-table-title [title]="'model.scheduler.tkb'"></mb-table-title>
+    <!-- filter element -->
+    <nz-table class="content mt-3">
+      <div [formGroup]="" class="filter-element">
+        <div class="row p-4">
+          <div class="col-3">
+            <label>{{ "common.keyword" | translate }}</label>
+            <input type="text" nz-input formControlName="keyword" [placeholder]="'model.user.searchTitle' | translate"
+                  />
+          </div>
+         </div>
+        <div class="row mt-3 mb-3 text-center">
+          <div class="col-12">
+            <button class="me-3" nz-button nzType="default">
+              {{ "action.reset" | translate }}
+            </button>
+            <button nz-button nzType="primary">
+              {{ "common.search" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </nz-table>
+    <div class="row mt-3">
+      <div class="col-12 text-end" *hasRoles="['survey:update']">
+        <mb-button [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" *hasRoles="['user:create']"
+        (click)="create()">
+        </mb-button>
+      </div>
+    </div>
+    <!--end filter element -->
+    <div class="row mt-3">
+      <div class="col-12">
+        <nz-table
+          #table
+          [nzData]="schedule"
+          [nzNoResult]="noDataResult"
+          [nzTableLayout]="'auto'"
+        >
+          <thead>
+          <tr>
+            <th nzAlign="center">{{ "model.scheduler.classId" | translate }}</th>
+            <th nzAlign="center">
+              {{ "model.scheduler.departmentName" | translate }}
+            </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.courseName" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.module" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.room" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.instructor" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.meeting" | translate }}
+              </th>
+            <th
+              nzAlign="center"
+              [nzWidth]="'150px'"
+              *hasRoles="['user:update']"
+            >
+              {{ "action.msg" | translate }}
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <ng-container *ngFor="let item of schedule; let i = index">
+            <tr>
+              <td nzAlign="center">{{ item.id }}</td>
+              <td nzAlign="center">{{ item.dept.name }}</td>
+              <td nzAlign="center">{{ item.course.name + ' - ' + item.course.maxNumbOfStudents  }}</td>
+              <td nzAlign="center">{{ item.course.module.name + ' - ' +  item.course.module.credits + ' tín'}}</td>
+              <td nzAlign="center">{{ item.room.number + ' - ' + '[' + item.room.seatingCapacity + ']'}}</td>
+              <td nzAlign="center">{{ item.instructor.user.name.lastName 
+                + ' ' + item.instructor.user.name.middleName 
+                + ' ' + item.instructor.user.name.firstName }}</td>
+              <td nzAlign="center">{{ item.meetingTime.name }}</td>
+              <!-- <td nzAlign="left">{{item.authenticationType }}</td>
+              <td nzAlign="left" *hasRoles="['user:update']"> -->
+                <td nzAlign="center">
+                <mb-button-action
+                  [action]="'edit'"
+                  *hasRoles="['user:update']"
+                  className="first"
+                  nzTooltipTitle="{{ 'action.update' | translate }}"
+                  nzTooltipPlacement="top"
+                  nz-tooltip
+                  (click)="update(item)"
+                >
+                </mb-button-action>
+                <ng-container *ngIf="item.authenticationType === USER_INTERNAL">
+                  <mb-button-action
+                    [action]="'delete'"
+                    *hasRoles="['user:update']"
+                    className="last"
+                    (click)="openChangePassword(item)"
+                    nzTooltipTitle="{{
+                        'model.user.changePassword' | translate
+                      }}"
+                    nzTooltipPlacement="top"
+                    nz-tooltip
+                  >
+                  </mb-button-action>
+                </ng-container>
+            </td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+  <ng-template #noDataResult>
+    <mb-no-data></mb-no-data>
+  </ng-template>
+  
