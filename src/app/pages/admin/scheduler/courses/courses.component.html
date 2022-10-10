@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" *ngIf="role !== 'INSTRUCTER'">
     <mb-table-title [title]="'model.scheduler.listCourse'"></mb-table-title>
     <!-- filter element -->
     <nz-table class="content mt-3">
@@ -10,9 +10,9 @@
                   />
           </div>
          </div>
-        <div class="row mt-3 mb-3 text-center">
+        <div class="row mt-3 mb-3 text-center" >
           <div class="col-12">
-            <button class="me-3" nz-button nzType="default">
+            <button  class="me-3" nz-button nzType="default">
               {{ "action.reset" | translate }}
             </button>
             <button nz-button nzType="primary">
@@ -23,10 +23,15 @@
       </div>
     </nz-table>
     <div class="row mt-3">
-      <div class="col-12 text-end" *hasRoles="['survey:update']">
-        <mb-button [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" *hasRoles="['user:create']"
-        (click)="create()">
+      <div class="col-12 text-end" >
+        <ng-container *ngIf="role !== 'INSTRUCTER'">
+           <mb-button  [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" 
+         (click)="create()">
         </mb-button>
+      </ng-container>
+        <!-- <mb-button [nzDisable]="role === 'INSTRUCTER'"  [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" 
+         (click)="create()">
+        </mb-button> -->
       </div>
     </div>
     <!--end filter element -->
@@ -53,7 +58,7 @@
             <th
               nzAlign="center"
               [nzWidth]="'150px'"
-              *hasRoles="['user:update']"
+              
             >
               {{ "action.msg" | translate }}
             </th>
@@ -71,7 +76,7 @@
                 <td nzAlign="center">
                 <mb-button-action
                   [action]="'edit'"
-                  *hasRoles="['user:update']"
+                
                   className="first"
                   nzTooltipTitle="{{ 'action.update' | translate }}"
                   nzTooltipPlacement="top"

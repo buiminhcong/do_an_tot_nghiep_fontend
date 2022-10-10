@@ -6,8 +6,12 @@ import { ToastService } from '@shared/services/helpers/toast.service';
 import { ScheduleService } from '@shared/services/scheduler/schedule.service';
 import CommonUtil from '@shared/utils/common-utils';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { LocalStorageService } from 'ngx-webstorage';
 import { CreateUpdateCourseComponent } from './create-update-course/create-update-course.component';
-
+import {
+  LOCAL_STORAGE,
+  SESSION_STORAGE,
+} from '@shared/constants/local-session-cookies.constants';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
@@ -19,7 +23,7 @@ export class CoursesComponent implements OnInit {
   total = 0;
   loading = false;
   isVisible = false;
-
+  role: any;
   isFirstFetch = true;
   course: any;
   courses: ICourse[] = [];
@@ -30,7 +34,9 @@ export class CoursesComponent implements OnInit {
     private toast: ToastService,
     private modalService: NzModalService,
     private scheduleService: ScheduleService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private localStorage: LocalStorageService,
+
   ) {
     this.getAllCourse();
   }
@@ -40,7 +46,13 @@ export class CoursesComponent implements OnInit {
     this.getAllCourse();
   }
 
+
   getAllCourse(): void {
+
+    this.role = this.localStorage.retrieve(LOCAL_STORAGE.ROLE);
+    console.log( "role: "+ this.role);
+    
+    
     this.scheduleService.getAllCourse(this.loading).subscribe(
       (response: any) => {
         this.courses = response?.body;
