@@ -19,6 +19,13 @@ export const SidebarConstant = [
         title: 'sidebar.courses',
         root: true,
       },
+
+        {
+        path: `${ROUTER_UTILS.scheduler.root}/${ROUTER_UTILS.room1.listRoom}`,
+        title: 'sidebar.rooms',
+        root: true,
+      },
+
       {
         path: `${ROUTER_UTILS.scheduler.root}/${ROUTER_UTILS.scheduler.tkb}`,
         title: 'sidebar.tkb',
@@ -26,4 +33,6 @@ export const SidebarConstant = [
       }
     ]
   },
+
+
 ];

@@ -3,6 +3,7 @@
     "title": "MB AMC - Hệ thống quản lý tòa nhà",
     "spinningTip": "Hệ thống đang hoạt động ...",
     "success": "Thành công",
+    "conflic": "Đối tượng đã có trong cơ sở dữ liệu",
     "info": "Thông tin",
     "warning": "Cảnh báo",
     "error": "Lỗi",
@@ -93,6 +94,7 @@
     "tkb": "Thời khóa biểu",
     "dashboard": "Trang chủ",
     "courses": "Quản lý khóa học",
+    "rooms": "Quản lý phòng học",
     "contract": "Quản lý hợp đồng",
     "scheduler": "Quản lý thời khóa biểu",
     "building": "Quản lý tòa nhà",
@@ -217,6 +219,15 @@
       "maxStudent": "Sinh viên",
       "titleDelete":"Xác nhận xóa khóa học",
       "contentDelete":"Bạn có chắc chắn muốn xóa khóa học ?"
+    },
+    "room1": {
+      "listRoom": "Danh sách phòng học",
+      "number": "Tên phòng học",
+      "note": "Mô tả",
+      "module": "Môn học",
+      "seatingCapacity": "Số sinh viên tối đa",      
+      "titleDelete":"Xác nhận xóa phòng học học",
+      "contentDelete":"Bạn có chắc chắn muốn xóa phòng học học ?"
     },
     "contract": {
       "title": "Quản lý hợp đồng",

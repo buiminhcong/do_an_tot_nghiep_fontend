@@ -39,6 +39,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 
+
 registerLocaleData(vi);
 
 const antDesignIcons = AllIcons as {
@@ -55,7 +56,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    CoreModule,
+    // CoreModule,
     SharedModule,
     NgbModule,
     TranslateModule.forRoot({

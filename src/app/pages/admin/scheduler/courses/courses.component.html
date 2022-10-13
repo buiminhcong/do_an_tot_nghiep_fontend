@@ -1,4 +1,4 @@
-<div class="content" *ngIf="role !== 'INSTRUCTER'">
+<div *ngIf="role === 'ACADEMIC_STAFF'">
     <mb-table-title [title]="'model.scheduler.listCourse'"></mb-table-title>
     <!-- filter element -->
     <nz-table class="content mt-3">
@@ -24,14 +24,14 @@
     </nz-table>
     <div class="row mt-3">
       <div class="col-12 text-end" >
-        <ng-container *ngIf="role !== 'INSTRUCTER'">
+        <!-- <ng-container *ngIf="role !== 'INSTRUCTER'">
            <mb-button  [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" 
          (click)="create()">
         </mb-button>
-      </ng-container>
-        <!-- <mb-button [nzDisable]="role === 'INSTRUCTER'"  [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" 
+      </ng-container> -->
+        <mb-button [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" 
          (click)="create()">
-        </mb-button> -->
+        </mb-button>
       </div>
     </div>
     <!--end filter element -->

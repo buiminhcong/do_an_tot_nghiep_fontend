@@ -1,0 +1,58 @@
+<div class="content">
+    <div *nzModalTitle>
+        <span>{{
+            (isUpdate ? "action.update" : "action.create") | translate
+            }}</span>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="form">
+                <div class="col-12 mb-4">
+                    <label>{{ "model.room1.number" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="number" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('number')?.touched || form.get('number')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('number')?.hasError('required')">
+                            <mb-not-blank [value]="'model.room1.number'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+                <div class="col-12 mb-4">
+                    <label>{{ "model.room1.seatingCapacity" | translate }}
+                        <span class="text-danger">*</span></label>
+                    <nz-input-number formControlName="seatingCapacity" [nzMin]="5" [nzStep]="10" class="ms-3 product-property">
+                    </nz-input-number>
+                    <ng-container *ngIf="form.get('seatingCapacity')?.touched || form.get('seatingCapacity')?.dirty">
+                        <span class="text-danger ms-2" *ngIf="form.get('seatingCapacity')?.hasError('required')">
+                            <mb-not-blank [value]="'model.room1.seatingCapacity'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.room1.note" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="note" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('note')?.touched || form.get('note')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('note')?.hasError('required')">
+                            <mb-not-blank [value]="'model.room1.note'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+               
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center" *nzModalFooter>
+        <button nz-button nzType="default" class="e-2" (click)="onCancel()">
+            {{ "action.cancel" | translate }}
+        </button>
+        <button nz-button nzType="primary" [disabled]="form.invalid" (click)="onSubmit()">
+            {{ (isUpdate ? "action.save" : "action.save") | translate }}
+        </button>
+    </div>
+</div>

@@ -70,6 +70,15 @@ export const ROUTER_UTILS = {
     tkb: 'detail',
     list: 'list',
   },
+
+  room1:  {
+    root: 'room',
+    listRoom: 'listRoom',
+    update: ':room/update/:type',
+    room: 'phòng học',
+    list: 'list',
+  },
+
   vendor: {
     root: 'vendor',
     detail: ':id/detail',

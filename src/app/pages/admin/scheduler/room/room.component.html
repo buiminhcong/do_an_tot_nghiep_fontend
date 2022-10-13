@@ -1,0 +1,88 @@
+<div class="content" *ngIf="role === 'ACADEMIC_STAFF'">
+    <mb-table-title [title]="'model.room1.listRoom'"></mb-table-title>
+    <!-- filter element -->
+    <nz-table class="content mt-3">
+        <div [formGroup]="" class="filter-element">
+            <div class="row p-4">
+                <div class="col-3">
+                    <label>{{ "common.keyword" | translate }}</label>
+                    <input type="text" nz-input formControlName="keyword"
+                        [placeholder]="'model.user.searchTitle' | translate" />
+                </div>
+            </div>
+            <div class="row mt-3 mb-3 text-center">
+                <div class="col-12">
+                    <button class="me-3" nz-button nzType="default">
+                        {{ "action.reset" | translate }}
+                    </button>
+                    <button nz-button nzType="primary">
+                        {{ "common.search" | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nz-table>
+    <div class="row mt-3">
+        <div class="col-12 text-end">
+            <!-- <ng-container *ngIf="role !== 'INSTRUCTER'">
+           <mb-button  [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" 
+         (click)="create()">
+        </mb-button>
+      </ng-container> -->
+            <mb-button [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" (click)="create()">
+            </mb-button>
+        </div>
+    </div>
+    <!--end filter element -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <nz-table #table [nzData]="rooms" [nzNoResult]="noDataResult" [nzTableLayout]="'auto'">
+                <thead>
+                    <tr>
+                        <th nzAlign="center">{{ "common.index" | translate }}</th>
+                        <th nzAlign="center">
+                            {{ "model.room1.number" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.room1.seatingCapacity" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.room1.note" | translate }}
+                        </th>
+                        <th nzAlign="center" [nzWidth]="'150px'">
+                            {{ "action.msg" | translate }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of rooms; let i = index">
+                        <tr>
+                            <td nzAlign="center">{{ i + 1 }}</td>
+                            <td nzAlign="center">{{ item.number }}</td>
+                            <td nzAlign="center">{{ item.seatingCapacity }}</td>
+                            <td nzAlign="center">{{ item.note }}</td>
+                            <!-- <td nzAlign="left">{{item.authenticationType }}</td>
+              <td nzAlign="left" *hasRoles="['user:update']"> -->
+                            <td nzAlign="center">
+                                <mb-button-action [action]="'edit'" className="first"
+                                    nzTooltipTitle="{{ 'action.update' | translate }}" nzTooltipPlacement="top"
+                                    nz-tooltip (click)="update(item)">
+                                </mb-button-action>
+                                <mb-button-action [action]="'delete'" [className]="'last'"
+                                    nzTooltipTitle="{{'action.delete' | translate}}" nzTooltipPlacement="top" nz-tooltip
+                                    (click)="delete(item)">
+                                </mb-button-action>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>
+<ng-template #noDataResult>
+    <mb-no-data></mb-no-data>
+</ng-template>
+<mb-modal [title]="'Xác nhận xóa phòng' +  ' '+  [numberRoom]"  [content]="'model.room1.contentDelete'" [btnCentered]="true"
+    [isVisible]="isVisible" (emitter)="onDelete($event)">
+</mb-modal>
