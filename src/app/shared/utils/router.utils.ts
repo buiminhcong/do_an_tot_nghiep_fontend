@@ -71,6 +71,14 @@ export const ROUTER_UTILS = {
     list: 'list',
   },
 
+  module: {
+    root: 'module',
+    listModule: 'listModule',
+    update: ':module/update/:type',
+    name: 'Môn học',
+    list: 'list',
+  },
+
   room1:  {
     root: 'room',
     listRoom: 'listRoom',

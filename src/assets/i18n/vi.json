@@ -92,6 +92,7 @@
   "sidebar": {
     "vendor": "Quản lý nhà cung cấp",
     "tkb": "Thời khóa biểu",
+    "module": "Quản lý môn học",
     "dashboard": "Trang chủ",
     "courses": "Quản lý khóa học",
     "rooms": "Quản lý phòng học",
@@ -226,8 +227,18 @@
       "note": "Mô tả",
       "module": "Môn học",
       "seatingCapacity": "Số sinh viên tối đa",      
-      "titleDelete":"Xác nhận xóa phòng học học",
-      "contentDelete":"Bạn có chắc chắn muốn xóa phòng học học ?"
+      "titleDelete":"Xác nhận xóa phòng học",
+      "contentDelete":"Bạn có chắc chắn muốn xóa phòng học ?"
+    },
+    "module": {
+      "listModule": "Danh sách môn học",
+      "manager": "Quản lý môn học",
+      "name": "Tên môn học",
+      "code": "Mã môn học",
+      "credits": "Số tín chỉ",
+      "subject": "Bộ môn",
+      "titleDelete":"Xác nhận xóa môn học",
+      "contentDelete":"Bạn có chắc chắn muốn xóa môn học ?"
     },
     "contract": {
       "title": "Quản lý hợp đồng",

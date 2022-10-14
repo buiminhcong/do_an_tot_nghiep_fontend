@@ -21,7 +21,7 @@
                 <div class="col-12 mb-4">
                     <label>{{ "model.room1.seatingCapacity" | translate }}
                         <span class="text-danger">*</span></label>
-                    <nz-input-number formControlName="seatingCapacity" [nzMin]="5" [nzStep]="10" class="ms-3 product-property">
+                    <nz-input-number formControlName="seatingCapacity" [nzMin]="30" [nzStep]="10" [nzMax]="200" class="ms-3 product-property">
                     </nz-input-number>
                     <ng-container *ngIf="form.get('seatingCapacity')?.touched || form.get('seatingCapacity')?.dirty">
                         <span class="text-danger ms-2" *ngIf="form.get('seatingCapacity')?.hasError('required')">

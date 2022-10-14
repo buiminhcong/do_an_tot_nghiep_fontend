@@ -31,6 +31,12 @@ const routes: Routes = [
         )
       },
       {
+        path:ROUTER_UTILS.module.root,
+        loadChildren : () => import('@pages/admin/manager-module/manager-module.module').then(
+          (m) => m.ManagerModuleModule
+        )
+      },
+      {
         path: ROUTER_UTILS.error.permissionDenied,
         component: Page403Component,
       },

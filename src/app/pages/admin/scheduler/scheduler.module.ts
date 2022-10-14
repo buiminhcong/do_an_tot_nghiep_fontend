@@ -16,8 +16,7 @@ import { CreateUpdateRoomComponent } from './room/create-update-room/create-upda
     SharedModule
   ],
   declarations: [CoursesComponent, CreateUpdateCourseComponent, 
-    TkbComponent, RoomComponent, CreateUpdateRoomComponent,
-    
+    TkbComponent, RoomComponent, CreateUpdateRoomComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

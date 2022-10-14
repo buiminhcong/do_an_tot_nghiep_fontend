@@ -27,13 +27,6 @@ const routes: Routes = [
       title: 'model.scheduler.tkb',
     },
   }
-  // {
-  //   path: ROUTER_UTILS.product.category,
-  //   component: CategoryComponent,
-  //   data: {
-  //     title: 'model.category.list',
-  //   },
-  // }
 ];
 
 @NgModule({

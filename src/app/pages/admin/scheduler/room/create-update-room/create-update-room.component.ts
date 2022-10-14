@@ -81,7 +81,15 @@ export class CreateUpdateRoomComponent implements OnInit {
             value: room,
           });
         }
-      });
+      }, (err:Http2ServerResponse) => {
+        console.log('Loi ' + err)
+        this.toast.error('Đã có phòng trong cơ sở dữ liệu');
+        this.modalRef.close({
+          success: true,
+          value: room,
+        });
+     }
+      );
     }
   }
 

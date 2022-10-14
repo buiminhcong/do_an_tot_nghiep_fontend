@@ -7,45 +7,61 @@
     <div class="row">
         <div class="col-12">
             <form [formGroup]="form">
+                
                 <div class="col-12 mb-4">
-                    <label>{{ "model.scheduler.name" | translate }}
+                    <label>{{ "model.module.name" | translate }}
                         <span class="text-danger">*</span>
                     </label>
                     <input formControlName="name" nz-input class="ms-3 product-property"/>
                     <ng-container *ngIf="form.get('name')?.touched || form.get('name')?.dirty">
                         <span class="text-danger" *ngIf="form.get('name')?.hasError('required')">
-                            <mb-not-blank [value]="'model.scheduler.name'"></mb-not-blank>
+                            <mb-not-blank [value]="'model.module.name'"></mb-not-blank>
                         </span>
                     </ng-container>
                 </div>
+
                 <div class="col-12 mb-4">
-                    <label>{{ "model.scheduler.maxStudent" | translate }}
+                    <label>{{ "model.module.code" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="moduleCode" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('moduleCode')?.touched || form.get('moduleCode')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('name')?.hasError('required')">
+                            <mb-not-blank [value]="'model.module.code'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.module.credits" | translate }}
                         <span class="text-danger">*</span></label>
-                    <nz-input-number formControlName="maxNumbOfStudents" [nzMin]="30" [nzStep]="10" [nzMax]="80" class="ms-3 product-property">
+                    <nz-input-number formControlName="credits" [nzMin]="1" [nzStep]="1" [nzMax]="10" class="ms-3 product-property">
                     </nz-input-number>
-                    <ng-container *ngIf="form.get('maxNumbOfStudents')?.touched || form.get('maxNumbOfStudents')?.dirty">
-                        <span class="text-danger ms-2" *ngIf="form.get('maxNumbOfStudents')?.hasError('required')">
-                            <mb-not-blank [value]="'model.scheduler.maxStudent'"></mb-not-blank>
+                    <ng-container *ngIf="form.get('credits')?.touched || form.get('credits')?.dirty">
+                        <span class="text-danger ms-2" *ngIf="form.get('credits')?.hasError('required')">
+                            <mb-not-blank [value]="'model.module.credits'"></mb-not-blank>
                         </span>
                     </ng-container>
                 </div>
+
                 <div class="col-12 mb-4">
-                    <label>{{ "model.scheduler.module" | translate }}
+                    <label>{{ "model.module.subject" | translate }}
                         <span class="text-danger">*</span></label>
-                    <nz-select formControlName="module_id" nzShowSearch nzAllowClear="true"
+                    <nz-select formControlName="id_subject" nzShowSearch nzAllowClear="true"
                         class="ms-3 product-property">
-                        <ng-container *ngFor="let type of modules">
+                        <ng-container *ngFor="let type of subjects">
                             <nz-option [nzValue]="type.id"
                                 [nzLabel]="type.name | translate">
                             </nz-option>
                         </ng-container>
                     </nz-select>
-                    <ng-container *ngIf="form.get('module_id')?.touched || form.get('module_id')?.dirty">
-                        <span class="text-danger" *ngIf="form.get('module_id')?.hasError('required')">
-                            <mb-not-blank [value]="'model.scheduler.module'"></mb-not-blank>
+                    <ng-container *ngIf="form.get('id_subject')?.touched || form.get('id_subject')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('id_subject')?.hasError('required')">
+                            <mb-not-blank [value]="'model.module.subject'"></mb-not-blank>
                         </span>
                     </ng-container>
                 </div>
+
             </form>
         </div>
     </div>

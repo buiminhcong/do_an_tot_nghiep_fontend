@@ -9,6 +9,7 @@ export const SidebarConstant = [
     root: true,
     // authorities: [],
   },
+  
   {
     path: ROUTER_UTILS.scheduler.root,
     title: 'sidebar.scheduler',
@@ -31,6 +32,19 @@ export const SidebarConstant = [
         title: 'sidebar.tkb',
         root: true,
       }
+    ]
+  },
+
+  {
+    path: ROUTER_UTILS.module.root,
+    title: 'sidebar.module',
+    icon: 'book',
+    submenu: [
+      {
+        path: `${ROUTER_UTILS.module.root}/${ROUTER_UTILS.module.listModule}`,
+        title: 'sidebar.module',
+        root: true,
+      },
     ]
   },
 
