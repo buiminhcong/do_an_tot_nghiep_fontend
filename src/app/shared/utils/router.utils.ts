@@ -79,6 +79,15 @@ export const ROUTER_UTILS = {
     list: 'list',
   },
 
+  instructor: {
+    root: 'instructor',
+    listInstructor: 'listInstructor',
+    update: ':instructor/update/:type',
+    code: 'Mã GV',
+    list: 'list',
+    subject: 'Bộ môn'
+  },
+
   room1:  {
     root: 'room',
     listRoom: 'listRoom',

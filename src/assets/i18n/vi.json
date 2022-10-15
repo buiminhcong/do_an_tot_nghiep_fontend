@@ -92,8 +92,10 @@
   "sidebar": {
     "vendor": "Quản lý nhà cung cấp",
     "tkb": "Thời khóa biểu",
-    "module": "Quản lý môn học",
+    "modules": "Quản lý môn học",
+    "instructors": "Quản lý giảng viên",
     "dashboard": "Trang chủ",
+    "instructor":"Quản lý giảng viên",
     "courses": "Quản lý khóa học",
     "rooms": "Quản lý phòng học",
     "contract": "Quản lý hợp đồng",
@@ -221,6 +223,27 @@
       "titleDelete":"Xác nhận xóa khóa học",
       "contentDelete":"Bạn có chắc chắn muốn xóa khóa học ?"
     },
+
+    "instructor": {
+      "listInstructor": "Danh sách giảng viên",
+      "manager": "Quản lý giảng viên",
+      "subject": "Bộ môn",
+      "code": "Mã GV",
+      "module": "Môn học",
+      "firstName": "Tên",
+      "name": "Họ tên",
+      "lastName": "Họ",
+      "middleName": "Tên đệm",
+      "phone": "SDT",
+      "email": "Email",
+      "city": "Địa chỉ",
+      "username": "Username",
+      "password": "Password",
+      "instructor": "Giảng viên",
+      "titleDelete":"Xác nhận xóa giảng viên",
+      "contentDelete":"Bạn có chắc chắn muốn xóa giảng viên ?"
+    },
+
     "room1": {
       "listRoom": "Danh sách phòng học",
       "number": "Tên phòng học",

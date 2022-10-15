@@ -37,6 +37,12 @@ const routes: Routes = [
         )
       },
       {
+        path:ROUTER_UTILS.instructor.root,
+        loadChildren : () => import('@pages/admin/manager-instructor/manager-instructor.module').then(
+          (m) => m.ManagerInstructorModule
+        )
+      },
+      {
         path: ROUTER_UTILS.error.permissionDenied,
         component: Page403Component,
       },

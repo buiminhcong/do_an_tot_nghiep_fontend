@@ -1,4 +1,4 @@
-<div *ngIf="role === 'ACADEMIC_STAFF'">
+<div>
     <mb-table-title [title]="'model.module.listModule'"></mb-table-title>
     <!-- filter element -->
     <nz-table class="content mt-3">
@@ -39,7 +39,7 @@
       <div class="col-12">
         <nz-table
           #table
-          [nzData]="courses"
+          [nzData]="modules"
           [nzNoResult]="noDataResult"
           [nzTableLayout]="'auto'"
         >

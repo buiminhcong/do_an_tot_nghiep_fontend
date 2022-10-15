@@ -1,0 +1,151 @@
+<div class="content">
+    <div *nzModalTitle>
+        <span>{{
+            (isUpdate ? "action.update" : "action.create") | translate
+            }}</span>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="form">
+                
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.code" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="code" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('name')?.touched || form.get('code')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('name')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.name'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.username" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="username" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('username')?.touched || form.get('username')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('username')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.username'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.password" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="password" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('password')?.touched || form.get('password')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('username')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.password'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.firstName" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="firstName" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('firstName')?.touched || form.get('firstName')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('firstName')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.firstName'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.lastName" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="lastName" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('lastName')?.touched || form.get('lastName')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('lastName')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.lastName'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.middleName" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="middleName" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('middleName')?.touched || form.get('middleName')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('middleName')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.middleName'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.phone" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="phone" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('phone')?.touched || form.get('phone')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('phone')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.phone'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.email" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="email" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('email')?.touched || form.get('email')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('email')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.email'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.city" | translate }}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input formControlName="city" nz-input class="ms-3 product-property"/>
+                    <ng-container *ngIf="form.get('city')?.touched || form.get('city')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('city')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.city'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label>{{ "model.instructor.subject" | translate }}
+                        <span class="text-danger">*</span></label>
+                    <nz-select formControlName="id_subject" nzShowSearch nzAllowClear="true"
+                        class="ms-3 product-property">
+                        <ng-container *ngFor="let type of subjects">
+                            <nz-option [nzValue]="type.id"
+                                [nzLabel]="type.name | translate">
+                            </nz-option>
+                        </ng-container>
+                    </nz-select>
+                    <ng-container *ngIf="form.get('id_subject')?.touched || form.get('id_subject')?.dirty">
+                        <span class="text-danger" *ngIf="form.get('id_subject')?.hasError('required')">
+                            <mb-not-blank [value]="'model.instructor.subject'"></mb-not-blank>
+                        </span>
+                    </ng-container>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center" *nzModalFooter>
+        <button nz-button nzType="default" class="e-2" (click)="onCancel()">
+            {{ "action.cancel" | translate }}
+        </button>
+        <button nz-button nzType="primary" [disabled]="form.invalid" (click)="onSubmit()">
+            {{ (isUpdate ? "action.save" : "action.save") | translate }}
+        </button>
+    </div>
+</div>
+

@@ -37,12 +37,25 @@ export const SidebarConstant = [
 
   {
     path: ROUTER_UTILS.module.root,
-    title: 'sidebar.module',
+    title: 'sidebar.modules',
     icon: 'book',
     submenu: [
       {
         path: `${ROUTER_UTILS.module.root}/${ROUTER_UTILS.module.listModule}`,
-        title: 'sidebar.module',
+        title: 'sidebar.modules',
+        root: true,
+      },
+    ]
+  },
+
+  {
+    path: ROUTER_UTILS.instructor.root,
+    title: 'sidebar.instructor',
+    icon: 'user',
+    submenu: [
+      {
+        path: `${ROUTER_UTILS.instructor.root}/${ROUTER_UTILS.instructor.listInstructor}`,
+        title: 'sidebar.instructor',
         root: true,
       },
     ]
