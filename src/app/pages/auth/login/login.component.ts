@@ -84,20 +84,4 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-
-  // isTokenUnexpired(): void {
-  //   this.eventManagerService.subscribe('reload', (res: any) => {
-  //     this.router.navigate(['/']);
-  //   });
-  //   const jwt =
-  //     this.localStorage.retrieve(LOCAL_STORAGE.JWT_TOKEN) ||
-  //     this.sessionStorage.retrieve(SESSION_STORAGE.JWT_TOKEN);
-  //   if (jwt) {
-  //     if (this.authService.getCurrentUser() === null) {
-  //       this.authService.storeProfile('/', false);
-  //     } else {
-  //       this.router.navigate(['/']);
-  //     }
-  //   }
-  // }
 }

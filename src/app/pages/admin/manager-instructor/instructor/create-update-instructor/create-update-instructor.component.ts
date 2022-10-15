@@ -19,8 +19,7 @@ export class CreateUpdateInstructorComponent implements OnInit {
   @Input() isUpdate = false;
   form: FormGroup = new FormGroup({});
   @Input()
-  teacherRequest: TeacherRequest = {
-  };
+  teacherRequest: any ;
   id_sb: any;
   subjects: any;
   instructor: any;
@@ -31,36 +30,35 @@ export class CreateUpdateInstructorComponent implements OnInit {
     private toast: ToastService,
     private instructorService: InstructorService,
 ) {
-
- }
-
-  ngOnInit(): void {
   
-   this.teacherRequest = {
-    id: this.instructor.id,
-    code: this.instructor.code,
-    subject: this.instructor.subject,
-    username: this.instructor.user.userName,
-    password: this.instructor.user.password,
-    firstName: this.instructor.user.name.firstName,
-    lastName: this.instructor.user.name.lastName,
-    middleName: this.instructor.user.name.middleName,
-    phone: this.instructor.user.address.phone,
-    email: this.instructor.user.address.email,
-    city: this.instructor.user.address.city
-   }
-
-   console.log(this.teacherRequest);
-   
+ }
+  ngOnInit(): void {   
+   if(this.instructor === undefined){
+    console.log("case 1");
     this.initForm();
     this.getAllSubject();
+   }else{
+    console.log("case 2");
+    this.teacherRequest = {
+      id: this.instructor.id,
+      code: this.instructor.code,
+      subject: this.instructor.subject,
+      username: this.instructor.user.userName,
+      password: this.instructor.user.password,
+      firstName: this.instructor.user.name.firstName,
+      lastName: this.instructor.user.name.lastName,
+      middleName: this.instructor.user.name.middleName,
+      phone: this.instructor.user.address.phone,
+      email: this.instructor.user.address.email,
+      city: this.instructor.user.address.city
+     }
+
+    this.initForm();
+    this.getAllSubject();
+   }
   }
 
   initForm(): void {
-
-    console.log(this.teacherRequest);
-    
-
     this.form = this.fb.group({
       code: [
        this.isUpdate ? this.teacherRequest?.code :null,
@@ -105,6 +103,7 @@ export class CreateUpdateInstructorComponent implements OnInit {
     });
   }
 
+
   onCancel(): void {
     this.modalRef.close({
       success: false,
@@ -145,7 +144,7 @@ export class CreateUpdateInstructorComponent implements OnInit {
       },
       (err:Http2ServerResponse) => {
         console.log('Lỗi ' + err)
-        this.toast.error('Trùng mã môn học hoặc trùng username');
+        this.toast.error('Trùng mã giảng viên học hoặc trùng username');
         this.modalRef.close({
           success: true,
           value: module,
@@ -175,7 +174,7 @@ export class CreateUpdateInstructorComponent implements OnInit {
     },
     (err:Http2ServerResponse) => {
       console.log('Lỗi ' + err)
-      this.toast.error('Trùng mã môn học hoặc trung username');
+      this.toast.error('Trùng mã giảng viên hoặc trung username');
       this.modalRef.close({
         success: true,
         value: teacherRequest,
