@@ -1,34 +1,37 @@
-<div class="content" *ngIf="role === 'ACADEMIC_STAFF'">
+<div class="content">
+  <div *nzModalTitle>
+    <span>{{
+      (isUpdate ? "action.update" : "action.create") | translate
+      }}</span>
+  </div>
+  <div class="content" *ngIf="role === 'ACADEMIC_STAFF'">
     <mb-table-title [title]="'model.scheduler.tkb'"></mb-table-title>
     <!-- filter element -->
-   
+
     <div class="row mt-3">
-      <div class="col-12 text-end" >
-        <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.refresh'" 
-        (click)="getTkb()">
+      <div class="col-12 text-end">
+        <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.refresh'" (click)="getTkb()">
         </mb-button>
 
-        <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.save'" 
-        (click)="getTkb()">
+        <!-- <mb-button-action [type]="'primary'" [action]="'delete'" [className]="'last'" nzTooltipTitle="{{'action.delete' | translate}}"
+          nzTooltipPlacement="top" nz-tooltip (click)="savetkb()">
+        </mb-button-action> -->
+
+        <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.save'" (click)="delete()">
         </mb-button>
       </div>
     </div>
-    
+
     <!--end filter element -->
     <div class="row mt-3">
       <div class="col-12">
-        <nz-table
-          #table
-          [nzData]="schedule"
-          [nzNoResult]="noDataResult"
-          [nzTableLayout]="'auto'"
-        >
+        <nz-table #table [nzData]="schedule" [nzNoResult]="noDataResult" [nzTableLayout]="'auto'">
           <thead>
-          <tr>
-            <th nzAlign="center">{{ "STT" | translate }}</th>
-            <th nzAlign="center">
-              {{ "model.scheduler.departmentName" | translate }}
-            </th>
+            <tr>
+              <th nzAlign="center">{{ "STT" | translate }}</th>
+              <th nzAlign="center">
+                {{ "model.scheduler.departmentName" | translate }}
+              </th>
               <th nzAlign="center">
                 {{ "model.scheduler.courseName" | translate }}
               </th>
@@ -44,57 +47,40 @@
               <th nzAlign="center">
                 {{ "model.scheduler.meeting" | translate }}
               </th>
-            <th
-              nzAlign="center"
-              [nzWidth]="'150px'"
-             
-            >
-              {{ "action.msg" | translate }}
-            </th>
-          </tr>
+              <th nzAlign="center" [nzWidth]="'150px'">
+                {{ "action.msg" | translate }}
+              </th>
+            </tr>
           </thead>
           <tbody>
-          <ng-container *ngFor="let item of schedule; let i = index">
-            <tr>
-              <td nzAlign="center">{{ item.id }}</td>
-              <td nzAlign="center">{{ item.dept.name }}</td>
-              <td nzAlign="center">{{ item.course.name + ' - ' + item.course.maxNumbOfStudents  }}</td>
-              <td nzAlign="center">{{ item.course.module.name + ' - ' +  item.course.module.credits + ' tín'}}</td>
-              <td nzAlign="center">{{ item.room.number + ' - ' + '[' + item.room.seatingCapacity + ']'}}</td>
-              <td nzAlign="center">{{ item.instructor.user.name.lastName 
-                + ' ' + item.instructor.user.name.middleName 
-                + ' ' + item.instructor.user.name.firstName }}</td>
-              <td nzAlign="center">{{ item.meetingTime.name }}</td>
-              <!-- <td nzAlign="left">{{item.authenticationType }}</td>
+            <ng-container *ngFor="let item of schedule; let i = index">
+              <tr>
+                <td nzAlign="center">{{ item.id }}</td>
+                <td nzAlign="center">{{ item.dept.name }}</td>
+                <td nzAlign="center">{{ item.course.name + ' - ' + item.course.maxNumbOfStudents }}</td>
+                <td nzAlign="center">{{ item.course.module.name + ' - ' + item.course.module.credits + ' tín'}}</td>
+                <td nzAlign="center">{{ item.room.number + ' - ' + '[' + item.room.seatingCapacity + ']'}}</td>
+                <td nzAlign="center">{{ item.instructor.user.name.lastName
+                  + ' ' + item.instructor.user.name.middleName
+                  + ' ' + item.instructor.user.name.firstName }}</td>
+                <td nzAlign="center">{{ item.meetingTime.name }}</td>
+                <!-- <td nzAlign="left">{{item.authenticationType }}</td>
               <td nzAlign="left" *hasRoles="['user:update']"> -->
                 <td nzAlign="center">
-                <mb-button-action
-                  [action]="'edit'"
-                  
-                  className="first"
-                  nzTooltipTitle="{{ 'action.update' | translate }}"
-                  nzTooltipPlacement="top"
-                  nz-tooltip
-                  (click)="update(item)"
-                >
-                </mb-button-action>
-                <ng-container *ngIf="item.authenticationType === USER_INTERNAL">
-                  <mb-button-action
-                    [action]="'delete'"
-                   
-                    className="last"
-                    (click)="openChangePassword(item)"
-                    nzTooltipTitle="{{
-                        'model.user.changePassword' | translate
-                      }}"
-                    nzTooltipPlacement="top"
-                    nz-tooltip
-                  >
+                  <mb-button-action [action]="'edit'" className="first"
+                    nzTooltipTitle="{{ 'action.update' | translate }}" nzTooltipPlacement="top" nz-tooltip
+                    (click)="update(item)">
                   </mb-button-action>
-                </ng-container>
-            </td>
-            </tr>
-          </ng-container>
+                  <ng-container *ngIf="item.authenticationType === USER_INTERNAL">
+                    <mb-button-action [action]="'delete'" className="last" (click)="openChangePassword(item)"
+                      nzTooltipTitle="{{
+                        'model.user.changePassword' | translate
+                      }}" nzTooltipPlacement="top" nz-tooltip>
+                    </mb-button-action>
+                  </ng-container>
+                </td>
+              </tr>
+            </ng-container>
           </tbody>
         </nz-table>
       </div>
@@ -103,4 +89,11 @@
   <ng-template #noDataResult>
     <mb-no-data></mb-no-data>
   </ng-template>
-  
+</div>
+<ng-template #noDataResult>
+  <mb-no-data></mb-no-data>
+</ng-template>
+
+<mb-modal [title]="'Bạn có muốn lưu thời khóa biểu này không?'" [content]="'Thời khóa biểu sẽ được lưu đè lên bản ghi trước. Xác nhận đồng ý?'" [btnCentered]="true"
+    [isVisible]="isVisible" (emitter)="savetkb($event)">
+</mb-modal>

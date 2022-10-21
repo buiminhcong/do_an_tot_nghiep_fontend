@@ -48,8 +48,8 @@ import {
       return super.post<any>(`${this.resourceUrl}/create`, course);
     }
 
-    createSchedule(schdeuleReq: any): Observable<any> {
-      return super.post<any>(`${this.resourceUrl}/schdeule/create`, schdeuleReq);
+    createSchedule(schedule: any): Observable<any> {
+      return super.post<any>(`${this.resourceUrl}/schedule/create`, schedule);
     }
   
     update(id: string, course: any): Observable<any> {

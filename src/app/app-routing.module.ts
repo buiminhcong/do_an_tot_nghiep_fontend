@@ -43,6 +43,12 @@ const routes: Routes = [
         )
       },
       {
+        path:ROUTER_UTILS.instructorSchedule.root,
+        loadChildren : () => import('@pages/admin/teacher/teacher.module').then(
+          (m) => m.TeacherModule
+        )
+      },
+      {
         path: ROUTER_UTILS.error.permissionDenied,
         component: Page403Component,
       },

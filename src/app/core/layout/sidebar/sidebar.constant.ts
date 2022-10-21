@@ -21,11 +21,11 @@ export const SidebarConstant = [
         root: true,
       },
 
-      //   {
-      //   path: `${ROUTER_UTILS.scheduler.root}/${ROUTER_UTILS.room1.listRoom}`,
-      //   title: 'sidebar.rooms',
-      //   root: true,
-      // },
+        {
+        path: `${ROUTER_UTILS.scheduler.root}/${ROUTER_UTILS.room1.listRoom}`,
+        title: 'sidebar.rooms',
+        root: true,
+      },
 
       {
         path: `${ROUTER_UTILS.scheduler.root}/${ROUTER_UTILS.scheduler.tkb}`,
@@ -55,13 +55,13 @@ export const SidebarConstant = [
   },
 
   {
-    path: ROUTER_UTILS.instructor.root,
-    title: 'sidebar.instructor',
-    icon: 'user',
+    path: ROUTER_UTILS.instructorSchedule.root,
+    title: 'sidebar.instructorSchedule',
+    icon: 'schedule',
     submenu: [
       {
-        path: `${ROUTER_UTILS.instructor.root}/${ROUTER_UTILS.instructor.listInstructor}`,
-        title: 'sidebar.instructor',
+        path: `${ROUTER_UTILS.instructorSchedule.root}/${ROUTER_UTILS.instructorSchedule.tkb}`,
+        title: 'sidebar.instructorSchedule',
         root: true,
       },
     ]

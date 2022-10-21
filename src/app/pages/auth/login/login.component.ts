@@ -10,6 +10,7 @@ import { LENGTH_VALIDATOR } from '@shared/constants/validators.constant';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { EventManagerService } from '@shared/services/helpers/event-manager.service';
 import { ToastService } from '@shared/services/helpers/toast.service';
+import { InstructorService } from '@shared/services/instructor/instructor.service';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
@@ -24,10 +25,13 @@ export class LoginComponent implements OnInit {
   LENGTH_VALIDATOR = LENGTH_VALIDATOR;
   currentUser: any;
   role: any;
+  id_user: any;
+  id_instructor: any;
 
   constructor(
     private fb: UntypedFormBuilder,
     private authService: AuthService,
+    private instructorservice: InstructorService,
     private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService,
     private translateService: TranslateService,
@@ -71,7 +75,17 @@ export class LoginComponent implements OnInit {
             this.localStorage.store(LOCAL_STORAGE.PROFILE, this.currentUser);
             this.role = token?.body?.role?.name;
             this.localStorage.store(LOCAL_STORAGE.ROLE, this.role);
-            console.log(token);
+            this.id_user = token?.body?.user?.id
+            console.log('id token: '+ this.id_user);
+            
+            this.instructorservice.getInstructorByIdUser(this.id_user).subscribe(
+              (response: any) => {
+                this.id_instructor = response?.body?.id;
+                console.log("id_intructor: "+ this.id_instructor);
+                this.localStorage.store(LOCAL_STORAGE.ID, this.id_instructor);
+              },
+            )
+          
             this.router.navigate([`dashboard`]);
           }
         });

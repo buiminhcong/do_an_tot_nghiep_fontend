@@ -1,0 +1,82 @@
+<div class="content">
+    <div *nzModalTitle>
+      <span>{{
+        (isUpdate ? "action.update" : "action.create") | translate
+        }}</span>
+    </div>
+    <div class="content" *ngIf="role === 'INSTRUCTER'">
+      <mb-table-title [title]="'Xem lịch dạy'"></mb-table-title>
+      <!-- filter element -->
+  
+      <div class="row mt-3">
+        <div class="col-12 text-end">
+          <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.refresh'" (click)="getTkb()">
+          </mb-button>
+
+        </div>
+      </div>
+  
+      <!--end filter element -->
+      <div class="row mt-3">
+        <div class="col-12">
+          <nz-table #table [nzData]="schedule" [nzNoResult]="noDataResult" [nzTableLayout]="'auto'">
+            <thead>
+              <tr>
+                <th nzAlign="center">{{ "STT" | translate }}</th>
+                <th nzAlign="center">
+                  {{ "model.scheduler.departmentName" | translate }}
+                </th>
+                <th nzAlign="center">
+                  {{ "model.scheduler.courseName" | translate }}
+                </th>
+                <th nzAlign="center">
+                  {{ "model.scheduler.module" | translate }}
+                </th>
+                <th nzAlign="center">
+                  {{ "model.scheduler.room" | translate }}
+                </th>
+                <th nzAlign="center">
+                  {{ "model.scheduler.instructor" | translate }}
+                </th>
+                <th nzAlign="center">
+                  {{ "model.scheduler.meeting" | translate }}
+                </th>
+                <!-- <th nzAlign="center" [nzWidth]="'150px'">
+                  {{ "action.msg" | translate }}
+                </th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of schedule; let i = index">
+                <tr>
+                  <td nzAlign="center">{{ item.id }}</td>
+                  <td nzAlign="center">{{ item.dept.name }}</td>
+                  <td nzAlign="center">{{ item.course.name + ' - ' + item.course.maxNumbOfStudents }}</td>
+                  <td nzAlign="center">{{ item.course.module.name + ' - ' + item.course.module.credits + ' tín'}}</td>
+                  <td nzAlign="center">{{ item.room.number + ' - ' + '[' + item.room.seatingCapacity + ']'}}</td>
+                  <td nzAlign="center">{{ item.instructor.user.name.lastName
+                    + ' ' + item.instructor.user.name.middleName
+                    + ' ' + item.instructor.user.name.firstName }}</td>
+                  <td nzAlign="center">{{ item.meetingTime.name }}</td>
+                  <!-- <td nzAlign="left">{{item.authenticationType }}</td>
+                <td nzAlign="left" *hasRoles="['user:update']"> -->
+                  <!-- <td nzAlign="center">
+                    <mb-button-action [action]="'edit'" className="first"
+                      nzTooltipTitle="{{ 'action.update' | translate }}" nzTooltipPlacement="top" nz-tooltip
+                      (click)="update(item)">
+                    </mb-button-action>
+                    <ng-container *ngIf="item.authenticationType === USER_INTERNAL">
+                      <mb-button-action [action]="'delete'" className="last" (click)="openChangePassword(item)"
+                        nzTooltipTitle="{{
+                          'model.user.changePassword' | translate
+                        }}" nzTooltipPlacement="top" nz-tooltip>
+                      </mb-button-action>
+                    </ng-container>
+                  </td> -->
+                </tr>
+              </ng-container>
+            </tbody>
+          </nz-table>
+        </div>
+      </div>
+    </div>

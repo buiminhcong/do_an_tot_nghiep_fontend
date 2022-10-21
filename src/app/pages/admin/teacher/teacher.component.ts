@@ -13,23 +13,27 @@ import {
 } from '@shared/constants/local-session-cookies.constants';
 import { IScheduleRequest } from '@shared/models/schedule/scheduleRequest.model';
 import CommonUtil from '@shared/utils/common-utils';
-
+import { InstructorService } from '@shared/services/instructor/instructor.service';
 
 @Component({
-  selector: 'app-tkb',
-  templateUrl: './tkb.component.html',
-  styleUrls: ['./tkb.component.scss']
+  selector: 'app-teacher',
+  templateUrl: './teacher.component.html',
+  styleUrls: ['./teacher.component.scss']
 })
-export class TkbComponent implements OnInit {
+export class TeacherComponent implements OnInit {
+
   schedule: any;
   dto: IScheduleRequest = {};
   loading = false;
   role: any;
+  id_user: any;
+
   isVisible = false;
   constructor( private router: Router,
     private modalService: NzModalService,
     private toast: ToastService,
     private scheduleService: ScheduleService,
+    private instructorService: InstructorService,
     private localStorage: LocalStorageService,) { }
 
   ngOnInit(): void {
@@ -38,39 +42,19 @@ export class TkbComponent implements OnInit {
 
   getTkb() {
 
+    this.id_user = this.localStorage.retrieve(LOCAL_STORAGE.ID);
     this.role = this.localStorage.retrieve(LOCAL_STORAGE.ROLE);
-    console.log( "role: "+ this.role);
+    console.log( "id-user: "+ this.id_user);
 
-    this.scheduleService.getTkb(this.loading).subscribe(
+    this.instructorService.getScheduleInstructor(this.id_user).subscribe(
       (response: any) => {
-        this.schedule = response?.body?.classes;
-        console.log(response?.body?.classes);
-        console.log(this.schedule);
-        this.dto = {
-          classes: response?.body?.classes,
-        }
-        console.log('dto: ' + this.dto.classes);
-        
+        this.schedule = response?.body;
+        console.log(this.schedule); 
       },
       (error: any) => {
         this.schedule = [];
       }
     );
-  }
-
-  delete(): void {
-    this.isVisible = true;
-  }
-
-  savetkb(result: { success: boolean }){
-    if (result && result?.success) {
-      this.scheduleService.createSchedule(this.schedule).subscribe((res) => {
-        this.toast.success('Lưu thành công thời khóa biểu');
-      });
-      this.isVisible = false;
-    } else {
-      this.isVisible = false;
-    }
   }
 
 }

@@ -30,6 +30,14 @@ import {
       return super.get(`${this.resourceUrlInstructor}`);
     }
 
+    getScheduleInstructor(id: string): Observable<any> {
+      return super.get(`${this.resourceUrlInstructor}/schedule/${id}`);
+    }
+
+    getInstructorByIdUser(id: string): Observable<any> {
+      return super.get(`${this.resourceUrlInstructor}/user/${id}`);
+    }
+
     create(instructor: any): Observable<any> {
       return super.post<any>(`${this.resourceUrlInstructor}/create`, instructor);
     }

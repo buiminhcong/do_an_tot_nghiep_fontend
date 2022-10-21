@@ -56,6 +56,24 @@
         </div>
       </div>
 
+      <div class="container" *ngIf="role === 'INSTRUCTER'">
+        <div *ngIf="menu.title === 'sidebar.instructorSchedule'">
+          <ng-container *ngIf="!menu.root">
+            <li nz-submenu [ngClass]="isCollapsed ? 'ant-menu-item-custom-selected' : ''"
+              [nzTitle]="menu.title | translate" [nzIcon]="menu.icon">
+              <ul>
+                <ng-container *ngFor="let item of menu.submenu">
+                  <li nz-menu-item nzMatchRouter class="li-padding-left"
+                    [ngClass]="isCollapsed ? 'ant-menu-item-custom-selected' : ''">
+                    <a [routerLink]="item.path">{{ item.title | translate }}</a>
+                  </li>
+                </ng-container>
+              </ul>
+            </li>
+          </ng-container>
+        </div>
+      </div>
+
       <div class="container" *ngIf="role === 'ROOM_MANAGER'">
         <div *ngIf="menu.title === 'sidebar.rooms'">
           <ng-container *ngIf="!menu.root">

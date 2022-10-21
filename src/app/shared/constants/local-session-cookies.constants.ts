@@ -3,9 +3,11 @@ export const  LOCAL_STORAGE = {
   LANGUAGE: 'language',
   PROFILE: 'profile',
   REFRESH_TOKEN: 'refresh-token',
-  ROLE: 'role'
+  ROLE: 'role',
+  ID: 'id'
 };
 
 export const SESSION_STORAGE = {
   JWT_TOKEN: 'jwt-token',
+  ID: 'id'
 };

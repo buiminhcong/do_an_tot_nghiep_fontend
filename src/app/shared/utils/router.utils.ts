@@ -72,6 +72,15 @@ export const ROUTER_UTILS = {
     list: 'list',
   },
 
+  instructorSchedule:  {
+    root: 'schedule',
+    listCourse: 'listCourse',
+    update: ':scheduler/update/:type',
+    tkb: 'view',
+    viewschedule: 'view-schedule',
+    list: 'list',
+  },
+
   module: {
     root: 'module',
     listModule: 'listModule',
