@@ -35,6 +35,10 @@ import {
     getTkb(loading = false): Observable<any> {
         return super.get(`${this.resourceUrl}/ok`);
     }
+
+    getSchedule(loading = false): Observable<any> {
+      return super.get(`${this.resourceUrl}/schedule`);
+  }
     
     getAllModule(loading = true): Observable<any> {
         return super.get(`${this.resourceUrlModule}`)
@@ -42,6 +46,10 @@ import {
   
     create(course: any): Observable<any> {
       return super.post<any>(`${this.resourceUrl}/create`, course);
+    }
+
+    createSchedule(schdeuleReq: any): Observable<any> {
+      return super.post<any>(`${this.resourceUrl}/schdeule/create`, schdeuleReq);
     }
   
     update(id: string, course: any): Observable<any> {

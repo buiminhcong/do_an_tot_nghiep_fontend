@@ -4,6 +4,7 @@ import { ROUTER_UTILS } from '@shared/utils/router.utils';
 import { CoursesComponent } from './courses/courses.component';
 import { RoomComponent } from './room/room.component';
 import { TkbComponent } from './tkb/tkb.component';
+import { ViewscheduleComponent } from './viewschedule/viewschedule.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,13 @@ const routes: Routes = [
     component: TkbComponent,
     data: {
       title: 'model.scheduler.tkb',
+    },
+  },
+  {
+    path: ROUTER_UTILS.scheduler.viewschedule,
+    component: ViewscheduleComponent,
+    data: {
+      title: 'model.scheduler.viewschedule',
     },
   }
 ];

@@ -90,8 +90,9 @@
     "unread": "Chưa xem"
   },
   "sidebar": {
+    "viewschedule": "Xem Thời Khóa Biểu",
     "vendor": "Quản lý nhà cung cấp",
-    "tkb": "Thời khóa biểu",
+    "tkb": " Tạo thời khóa biểu",
     "modules": "Quản lý môn học",
     "instructors": "Quản lý giảng viên",
     "dashboard": "Trang chủ",
@@ -158,6 +159,7 @@
   "action": {
     "msg": "Hành động",
     "save": "Lưu",
+    "refresh": "Làm mới",
     "create": "Tạo mới",
     "update": "Cập nhật",
     "delete": "Xóa",
@@ -208,11 +210,12 @@
       }
     },
     "scheduler": {
+      "viewschedule": "Xem Thời Khóa Biểu",
       "listCourse": "Danh sách khóa học",
       "name": "Tên khóa học",
       "module": "Môn học",
       "maxNumbOfStudents": "Số sinh viên tối đa",
-      "tkb": "Thời khóa biểu",
+      "tkb": "Tạo thời khóa biểu",
       "classId": "Mã lớp",
       "departmentName":"Phòng ban",
       "courseName": "Khóa học",

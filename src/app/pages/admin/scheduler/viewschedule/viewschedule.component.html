@@ -4,16 +4,11 @@
    
     <div class="row mt-3">
       <div class="col-12 text-end" >
-        <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.refresh'" 
-        (click)="getTkb()">
-        </mb-button>
-
-        <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.save'" 
+        <mb-button [type]="'primary'" class="me-3" [icon]="''" [text]="'action.refresh'" 
         (click)="getTkb()">
         </mb-button>
       </div>
     </div>
-    
     <!--end filter element -->
     <div class="row mt-3">
       <div class="col-12">
@@ -25,7 +20,7 @@
         >
           <thead>
           <tr>
-            <th nzAlign="center">{{ "STT" | translate }}</th>
+            <th nzAlign="center">{{ "model.scheduler.classId" | translate }}</th>
             <th nzAlign="center">
               {{ "model.scheduler.departmentName" | translate }}
             </th>

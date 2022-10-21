@@ -7,6 +7,7 @@ import { CreateUpdateCourseComponent } from './courses/create-update-course/crea
 import { TkbComponent } from './tkb/tkb.component';
 import { RoomComponent } from './room/room.component';
 import { CreateUpdateRoomComponent } from './room/create-update-room/create-update-room.component';
+import { ViewscheduleComponent } from './viewschedule/viewschedule.component';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { CreateUpdateRoomComponent } from './room/create-update-room/create-upda
     SharedModule
   ],
   declarations: [CoursesComponent, CreateUpdateCourseComponent, 
-    TkbComponent, RoomComponent, CreateUpdateRoomComponent
+    TkbComponent, RoomComponent, CreateUpdateRoomComponent, ViewscheduleComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
