@@ -3,6 +3,9 @@
   <div class="center">
     <div class="container">
       <section class="content">
+
+        <div class="primary" *ngIf="check == false">Tài khoản hoặc mật khẩu không chính xác!</div>
+
         <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
           <div class="row">
             <div class="col-12 logo">

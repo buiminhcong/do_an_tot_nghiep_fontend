@@ -1,66 +1,66 @@
 <div class="content">
-    <div *nzModalTitle>
-      <span>{{
-        (isUpdate ? "action.update" : "action.create") | translate
-        }}</span>
-    </div>
-    <div class="content" *ngIf="role === 'INSTRUCTER'">
-      <mb-table-title [title]="'Xem lịch dạy'"></mb-table-title>
-      <!-- filter element -->
-  
-      <div class="row mt-3">
-        <div class="col-12 text-end">
-          <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.refresh'" (click)="getTkb()">
-          </mb-button>
+  <div *nzModalTitle>
+    <span>{{
+      (isUpdate ? "action.update" : "action.create") | translate
+      }}</span>
+  </div>
+  <div class="content" *ngIf="role === 'INSTRUCTER'">
+    <mb-table-title [title]="'Xem lịch dạy'"></mb-table-title>
+    <!-- filter element -->
 
-        </div>
+    <div class="row mt-3">
+      <div class="col-12 text-end">
+        <mb-button [type]="'primary'" class="me-3" [icon]="'pl'" [text]="'action.refresh'" (click)="getTkb()">
+        </mb-button>
+
       </div>
-  
-      <!--end filter element -->
-      <div class="row mt-3">
-        <div class="col-12">
-          <nz-table #table [nzData]="schedule" [nzNoResult]="noDataResult" [nzTableLayout]="'auto'">
-            <thead>
-              <tr>
-                <th nzAlign="center">{{ "STT" | translate }}</th>
-                <th nzAlign="center">
-                  {{ "model.scheduler.departmentName" | translate }}
-                </th>
-                <th nzAlign="center">
-                  {{ "model.scheduler.courseName" | translate }}
-                </th>
-                <th nzAlign="center">
-                  {{ "model.scheduler.module" | translate }}
-                </th>
-                <th nzAlign="center">
-                  {{ "model.scheduler.room" | translate }}
-                </th>
-                <th nzAlign="center">
-                  {{ "model.scheduler.instructor" | translate }}
-                </th>
-                <th nzAlign="center">
-                  {{ "model.scheduler.meeting" | translate }}
-                </th>
-                <!-- <th nzAlign="center" [nzWidth]="'150px'">
+    </div>
+
+    <!--end filter element -->
+    <div class="row mt-3">
+      <div class="col-12">
+        <nz-table #table [nzData]="schedule" [nzNoResult]="noDataResult" [nzTableLayout]="'auto'">
+          <thead>
+            <tr>
+              <th nzAlign="center">{{ "STT" | translate }}</th>
+              <th nzAlign="center">
+                {{ "model.scheduler.departmentName" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.courseName" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.module" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.room" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.instructor" | translate }}
+              </th>
+              <th nzAlign="center">
+                {{ "model.scheduler.meeting" | translate }}
+              </th>
+              <!-- <th nzAlign="center" [nzWidth]="'150px'">
                   {{ "action.msg" | translate }}
                 </th> -->
-              </tr>
-            </thead>
-            <tbody>
-              <ng-container *ngFor="let item of schedule; let i = index">
-                <tr>
-                  <td nzAlign="center">{{ item.id }}</td>
-                  <td nzAlign="center">{{ item.dept.name }}</td>
-                  <td nzAlign="center">{{ item.course.name + ' - ' + item.course.maxNumbOfStudents }}</td>
-                  <td nzAlign="center">{{ item.course.module.name + ' - ' + item.course.module.credits + ' tín'}}</td>
-                  <td nzAlign="center">{{ item.room.number + ' - ' + '[' + item.room.seatingCapacity + ']'}}</td>
-                  <td nzAlign="center">{{ item.instructor.user.name.lastName
-                    + ' ' + item.instructor.user.name.middleName
-                    + ' ' + item.instructor.user.name.firstName }}</td>
-                  <td nzAlign="center">{{ item.meetingTime.name }}</td>
-                  <!-- <td nzAlign="left">{{item.authenticationType }}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of schedule; let i = index">
+              <tr>
+                <td nzAlign="center">{{ item.id }}</td>
+                <td nzAlign="center">{{ item.dept.name }}</td>
+                <td nzAlign="center">{{ item.course.name + ' - ' + item.course.maxNumbOfStudents }}</td>
+                <td nzAlign="center">{{ item.course.module.name + ' - ' + item.course.module.credits + ' tín'}}</td>
+                <td nzAlign="center">{{ item.room.number + ' - ' + '[' + item.room.seatingCapacity + ']'}}</td>
+                <td nzAlign="center">{{ item.instructor.user.name.lastName
+                  + ' ' + item.instructor.user.name.middleName
+                  + ' ' + item.instructor.user.name.firstName }}</td>
+                <td nzAlign="center">{{ item.meetingTime.date + ' - ' + item.meetingTime.time }}</td>
+                <!-- <td nzAlign="left">{{item.authenticationType }}</td>
                 <td nzAlign="left" *hasRoles="['user:update']"> -->
-                  <!-- <td nzAlign="center">
+                <!-- <td nzAlign="center">
                     <mb-button-action [action]="'edit'" className="first"
                       nzTooltipTitle="{{ 'action.update' | translate }}" nzTooltipPlacement="top" nz-tooltip
                       (click)="update(item)">
@@ -73,10 +73,172 @@
                       </mb-button-action>
                     </ng-container>
                   </td> -->
-                </tr>
-              </ng-container>
-            </tbody>
-          </nz-table>
-        </div>
+              </tr>
+            </ng-container>
+          </tbody>
+        </nz-table>
       </div>
     </div>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 20px;" class="contaier"> Lịch dạy </h2>
+
+  <div class="container">
+    <div class="timetable-img text-center">
+      <img src="img/content/timetable.png" alt="">
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr class="bg-light-gray">
+            <th class="text-uppercase">Time
+            </th>
+            <th class="text-uppercase">Monday</th>
+            <th class="text-uppercase">Tuesday</th>
+            <th class="text-uppercase">Wednesday</th>
+            <th class="text-uppercase">Thursday</th>
+            <th class="text-uppercase">Friday</th>
+            <th class="text-uppercase">Saturday</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="align-middle">Kíp 1 - 7:00-8:50</td>
+            <!-- *ngFor="let item of multi[0];" -->
+            <!-- 1 -->
+            <ng-container *ngFor="let item of multi[0];">
+              <td style="width: 150px;" class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5
+               margin-10px-bottom text-white font-size16  xs-font-size13" *ngIf="item">
+                <span class="text-primary"
+                 > Phòng:  {{item.room.number}}</span>
+                <div class="margin-10px-top font-size14 text-primary"> Môn: {{item.course.module.name}}</div>
+                <span
+                  class="text-primary"> Mã Lớp:  {{item.id}}</span>
+              </td>
+              <td *ngIf="item === null">
+                <span
+                  class=""></span>
+                <div class=""></div>
+                <div class=""></div>
+              </td>
+            </ng-container>
+            <!--  -->
+          </tr>
+
+          <tr>
+            <td class="align-middle">Kíp 2 - 9:00-10:50</td>
+               <!-- 2 -->
+            <ng-container *ngFor="let item of multi[1];">
+              <td style="width: 150px;" class="bg-yellow padding-5px-tb padding-15px-lr
+               border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13" *ngIf="item">
+                <span
+                  class="text-primary"> Phòng:  {{item.room.number}}</span>
+                <div class="margin-10px-top font-size14 text-primary"> Môn: {{item.course.module.name}}</div>
+                <span
+                  class="text-primary"> Mã Lớp:  {{item.id}}</span>
+              </td>
+              <td *ngIf="item === null">
+                <span
+                  class=""></span>
+                <div class=""></div>
+                <div class=""></div>
+              </td>
+            </ng-container>
+            <!--  -->
+          </tr>
+
+          <tr>
+            <td class="align-middle">Kíp 3 - 12:00-13:50</td>
+                <!-- 3 -->
+            <ng-container *ngFor="let item of multi[2];">
+              <td style="width: 150px;" class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5
+               margin-10px-bottom text-white font-size16  xs-font-size13" *ngIf="item">
+                <span
+                  class="text-primary"> Phòng:  {{item.room.number}}</span>
+                <div class=" text-primary margin-10px-top font-size14"> Môn: {{item.course.module.name}}</div>
+                <span
+                  class="text-primary"> Mã Lớp:  {{item.id}}</span>
+              </td>
+              <td *ngIf="item === null">
+                <span
+                  class=""></span>
+                <div class=""></div>
+                <div class=""></div>
+              </td>
+            </ng-container>
+            <!--  -->
+          </tr>
+
+          <tr>
+            <td class="align-middle">Kíp 4 - 14:00-15:50</td>
+                 <!-- 4 -->
+            <ng-container *ngFor="let item of multi[3];">
+              <td style="width: 150px;" class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5
+               margin-10px-bottom text-white font-size16  xs-font-size13" *ngIf="item">
+                <span
+                  class="text-primary"> Phòng:  {{item.room.number}}</span>
+                <div class=" text-primary margin-10px-top font-size14"> Môn: {{item.course.module.name}}</div>
+                <span
+                  class="text-primary"> Mã Lớp:  {{item.id}}</span>
+              </td>
+              <td *ngIf="item === null">
+                <span
+                  class=""></span>
+                <div class=""></div>
+                <div class=""></div>
+              </td>
+            </ng-container>
+            <!--  -->
+          </tr>
+
+          <tr>
+            <td class="align-middle">Kíp 5 - 16:00-17:50</td>
+                <!-- 5 -->
+            <ng-container *ngFor="let item of multi[4];">
+              <td style="width: 150px;" class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5
+              margin-10px-bottom text-white font-size16  xs-font-size13"  *ngIf="item">
+                <span
+                  class=" text-primary"> Phòng:  {{item.room.number}}</span>
+                <div class="margin-10px-top font-size14 text-primary"> Môn: {{item.course.module.name}}</div>
+                <span
+                  class="text-primary"> Mã Lớp:  {{item.id}}</span>
+              </td>
+              <td *ngIf="item === null">
+                <span
+                  class=""></span>
+                <div class=""></div>
+                <div class=""></div>
+              </td>
+            </ng-container>
+            <!--  -->
+          </tr>
+
+          <tr>
+            <td class="align-middle">Kíp 6 - 18:00-19:50</td>
+               <!-- 6 -->
+            <ng-container *ngFor="let item of multi[5];">
+              <td style="width: 150px;" class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5
+              margin-10px-bottom text-white font-size16  xs-font-size13" *ngIf="item">
+                <span
+                  class="text-primary"> Phòng:  {{item.room.number}}</span>
+                <div class="margin-10px-top font-size14 text-primary"> Môn: {{item.course.module.name}}</div>
+                <span
+                  class="text-primary"> Mã Lớp:  {{item.id}}</span>
+              </td>
+              <td *ngIf="item === null">
+                <span
+                  class=""></span>
+                <div class=""></div>
+                <div class=""></div>
+              </td>
+            </ng-container>
+            <!--  -->
+          </tr>
+
+        </tbody>
+        <!-- </ng-container> -->
+      </table>
+    </div>
+  </div>

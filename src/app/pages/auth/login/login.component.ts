@@ -11,6 +11,7 @@ import { AuthService } from '@shared/services/auth/auth.service';
 import { EventManagerService } from '@shared/services/helpers/event-manager.service';
 import { ToastService } from '@shared/services/helpers/toast.service';
 import { InstructorService } from '@shared/services/instructor/instructor.service';
+import { Http2ServerResponse } from 'http2';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
@@ -27,6 +28,8 @@ export class LoginComponent implements OnInit {
   role: any;
   id_user: any;
   id_instructor: any;
+  check = true;
+  err = "Tài khoản hoặc mật khẩu không đúng";
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -85,11 +88,20 @@ export class LoginComponent implements OnInit {
                 this.localStorage.store(LOCAL_STORAGE.ID, this.id_instructor);
               },
             )
+            this.check = true;
+            // console.log("check dung: "+ this.check)
           
             this.router.navigate([`dashboard`]);
           }
-        });
+        },
+        
+        (err:Http2ServerResponse) => {
+          this.toast.error('Tài khoản hoặc mật khẩu không đúng');
+       }
+        );
     } else {
+      this.check = false;
+      console.log("check sai: "+ this.check)
       Object.values(this.loginForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
