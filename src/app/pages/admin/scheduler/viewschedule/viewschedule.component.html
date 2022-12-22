@@ -63,7 +63,7 @@
               <!-- <td nzAlign="left">{{item.authenticationType }}</td>
               <td nzAlign="left" *hasRoles="['user:update']"> -->
                 <td nzAlign="center">
-                <mb-button-action
+                <!-- <mb-button-action
                   [action]="'edit'"
                   
                   className="first"
@@ -72,20 +72,12 @@
                   nz-tooltip
                   (click)="update(item)"
                 >
-                </mb-button-action>
+                </mb-button-action> -->
                 <ng-container *ngIf="item.authenticationType === USER_INTERNAL">
-                  <mb-button-action
-                    [action]="'delete'"
-                   
-                    className="last"
-                    (click)="openChangePassword(item)"
-                    nzTooltipTitle="{{
-                        'model.user.changePassword' | translate
-                      }}"
-                    nzTooltipPlacement="top"
-                    nz-tooltip
-                  >
-                  </mb-button-action>
+                  <mb-button-action [action]="'view'" className="center" nzTooltipTitle="Chi tiết lịch dạy"
+                  nzTooltipPlacement="top" nz-tooltip (click)="detail(item.instructor.id)">
+                </mb-button-action> 
+
                 </ng-container>
             </td>
             </tr>

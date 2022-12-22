@@ -3,7 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { ROUTER_UTILS } from '@shared/utils/router.utils';
 import { CoursesComponent } from './courses/courses.component';
 import { RoomComponent } from './room/room.component';
+import { StatictisInstructorComponent } from './statictis-instructor/statictis-instructor.component';
+import { StatictisRoomComponent } from './statictis-room/statictis-room.component';
 import { TkbComponent } from './tkb/tkb.component';
+import { ViewDetailTeacherComponent } from './viewschedule/view-detail-teacher/view-detail-teacher.component';
 import { ViewscheduleComponent } from './viewschedule/viewschedule.component';
 
 const routes: Routes = [
@@ -33,6 +36,28 @@ const routes: Routes = [
     component: ViewscheduleComponent,
     data: {
       title: 'model.scheduler.viewschedule',
+    },
+  },
+
+  {
+    path: ROUTER_UTILS.scheduler.roomstatictis,
+    component: StatictisRoomComponent,
+    data: {
+      title: 'Xem thống kê phòng sử dụng',
+    },
+  },
+  {
+    path: ROUTER_UTILS.scheduler.instructorstatictis,
+    component: StatictisInstructorComponent,
+    data: {
+      title: 'Xem thống giảng viên dạy',
+    },
+  },
+  {
+    path: ROUTER_UTILS.scheduler.detail + '/:id',
+    component: ViewDetailTeacherComponent,
+    data: {
+      title: 'Lịch dạy giảng viên',
     },
   }
 ];

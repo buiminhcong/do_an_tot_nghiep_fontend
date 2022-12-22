@@ -66,6 +66,9 @@ export const ROUTER_UTILS = {
   scheduler:  {
     root: 'scheduler',
     listCourse: 'listCourse',
+    roomstatictis: 'roomstatctis',
+    instructorstatictis: 'instructorstatictis',
+    detail: 'detail',
     update: ':scheduler/update/:type',
     tkb: 'detail',
     viewschedule: 'view-schedule',

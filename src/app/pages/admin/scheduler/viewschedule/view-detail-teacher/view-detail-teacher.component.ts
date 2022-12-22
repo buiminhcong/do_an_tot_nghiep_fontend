@@ -1,26 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastService } from '@shared/services/helpers/toast.service';
-import { ScheduleService } from '@shared/services/scheduler/schedule.service';
-import { NzModalService } from 'ng-zorro-antd/modal';
-import { LocalStorageService } from 'ngx-webstorage';
-import { STATUS } from '@shared/constants/status.constants';
-import { NzModalRef } from 'ng-zorro-antd/modal';
-import {
-  LOCAL_STORAGE,
-  SESSION_STORAGE,
-} from '@shared/constants/local-session-cookies.constants';
+import { ActivatedRoute } from '@angular/router';
 import { IScheduleRequest } from '@shared/models/schedule/scheduleRequest.model';
-import CommonUtil from '@shared/utils/common-utils';
 import { InstructorService } from '@shared/services/instructor/instructor.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
-  selector: 'app-teacher',
-  templateUrl: './teacher.component.html',
-  styleUrls: ['./teacher.component.scss'],
+  selector: 'app-view-detail-teacher',
+  templateUrl: './view-detail-teacher.component.html',
+  styleUrls: ['./view-detail-teacher.component.scss']
 })
-export class TeacherComponent implements OnInit {
+export class ViewDetailTeacherComponent implements OnInit {
+
+  id: any;
   schedule: any = [];
   dto: IScheduleRequest = {};
   loading = false;
@@ -36,25 +27,27 @@ export class TeacherComponent implements OnInit {
   gio: any =['7:00-8:50', '9:00-11:00', '12:00-13:50', '14:00-15:50', '16:00-17:50', '18:00-19:50'];
 
   isVisible = false;
-  constructor(
-    private router: Router,
-    private modalService: NzModalService,
-    private toast: ToastService,
-    private scheduleService: ScheduleService,
+
+  constructor( private r: ActivatedRoute,
     private instructorService: InstructorService,
-    private localStorage: LocalStorageService
-  ) {}
+    private localStorage: LocalStorageService) { 
+   
+  }
 
   ngOnInit(): void {
+
+    this.id = this.r.snapshot.params['id'];
+    console.log(this.id);
     this.getTkb();
+
   }
 
   getTkb() {
-    this.id_user = this.localStorage.retrieve(LOCAL_STORAGE.ID);
-    this.role = this.localStorage.retrieve(LOCAL_STORAGE.ROLE);
+    // this.id_user = this.localStorage.retrieve(this.id);
+    // this.role = this.localStorage.retrieve(LOCAL_STORAGE.ROLE);
     console.log('id-user: ' + this.id_user);
 
-    this.instructorService.getScheduleInstructor(this.id_user).subscribe(
+    this.instructorService.getScheduleInstructor(this.id).subscribe(
       (response: any) => {
         this.schedule = response?.body;
         console.log(this.schedule);
@@ -71,6 +64,7 @@ export class TeacherComponent implements OnInit {
     );
   }
 
+  
   createDay(time: string): any {
     const k: any = [null, null, null, null, null];
     for (let i = 0; i < this.schedule.length; i++) {
@@ -101,4 +95,6 @@ export class TeacherComponent implements OnInit {
     console.log('array k: ' + k);
     return k;
   }
+
+
 }

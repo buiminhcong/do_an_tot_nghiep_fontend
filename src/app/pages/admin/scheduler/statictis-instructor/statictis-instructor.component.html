@@ -1,0 +1,98 @@
+<div >
+    <mb-table-title [title]="'Xem thống kê giảng viên dạy'"></mb-table-title>
+    <!-- filter element -->
+    <!-- <nz-table class="content mt-3">
+        <div [formGroup]="" class="filter-element">
+            <div class="row p-4">
+                <div class="col-3">
+                    <label>{{ "common.keyword" | translate }}</label>
+                    <input type="text" nz-input formControlName="keyword"
+                        [placeholder]="'model.user.searchTitle' | translate" />
+                </div>
+            </div>
+            <div class="row mt-3 mb-3 text-center">
+                <div class="col-12">
+                    <button class="me-3" nz-button nzType="default">
+                        {{ "action.reset" | translate }}
+                    </button>
+                    <button nz-button nzType="primary">
+                        {{ "common.search" | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nz-table> -->
+    <div class="row mt-3">
+        <div class="col-12 text-end">
+            <!-- <ng-container *ngIf="role !== 'INSTRUCTER'">
+           <mb-button  [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" 
+         (click)="create()">
+        </mb-button>
+      </ng-container> -->
+            <mb-button [type]="'primary'" class="me-3" [icon]="'plus'" [text]="'action.create'" >
+            </mb-button>
+        </div>
+    </div>
+    <!--end filter element -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <nz-table #table [nzData]="instructors" [nzNoResult]="noDataResult" [nzTableLayout]="'auto'">
+                <thead>
+                    <tr>
+                        <th nzAlign="center">{{ "common.index" | translate }}</th>
+
+                        <th nzAlign="center">
+                            {{ "model.instructor.lastName" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.instructor.firstName" | translate }}
+                        </th>
+
+                        <th nzAlign="center">
+                            {{ "model.instructor.code" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.instructor.username" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.instructor.subject" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.instructor.phone" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.instructor.email" | translate }}
+                        </th>
+                        <th nzAlign="center">
+                            {{ "model.instructor.city" | translate }}
+                        </th>
+                        <th nzAlign="center" [nzWidth]="'150px'">
+                            {{ "model.instructor.numuser" | translate }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of instructors; let i = index">
+                        <tr>
+                            <td nzAlign="center">{{ i + 1 }}</td>
+                            <td nzAlign="center">{{ item.instructor.user.name.lastName}}</td>
+                            <td nzAlign="center">{{item.instructor.user.name.firstName}}</td>
+                            <td nzAlign="center">{{item.instructor.code}}</td>
+                            <td nzAlign="center">{{ item.instructor.user.userName }}</td>
+                            <td nzAlign="center">{{ item.instructor.subject.name }}</td>
+                            <td nzAlign="center">{{ item.instructor.user.address.phone }}</td>
+                            <td nzAlign="center">{{ item.instructor.user.address.email }}</td>
+                            <td nzAlign="center">{{ item.instructor.user.address.city }}</td>
+                            <td nzAlign="center">{{ item.count }}</td>
+                     
+                            
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>
+<ng-template #noDataResult>
+    <mb-no-data></mb-no-data>
+</ng-template>

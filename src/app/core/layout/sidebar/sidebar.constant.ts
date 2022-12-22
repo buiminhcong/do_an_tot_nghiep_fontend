@@ -55,6 +55,25 @@ export const SidebarConstant = [
   },
 
   {
+    path: ROUTER_UTILS.scheduler.root,
+    title: 'sidebar.statictis',
+    icon: 'stock',
+    submenu: [
+      {
+        path: `${ROUTER_UTILS.scheduler.root}/${ROUTER_UTILS.scheduler.roomstatictis}`,
+        title: 'sidebar.roomstatictis',
+        root: true,
+      },
+      
+      {
+        path: `${ROUTER_UTILS.scheduler.root}/${ROUTER_UTILS.scheduler.instructorstatictis}`,
+        title: 'sidebar.instructorstatictis',
+        root: true,
+      }
+    ]
+  },
+
+  {
     path: ROUTER_UTILS.instructorSchedule.root,
     title: 'sidebar.instructorSchedule',
     icon: 'schedule',
@@ -62,6 +81,19 @@ export const SidebarConstant = [
       {
         path: `${ROUTER_UTILS.instructorSchedule.root}/${ROUTER_UTILS.instructorSchedule.tkb}`,
         title: 'sidebar.instructorSchedule',
+        root: true,
+      },
+    ]
+  },
+
+  {
+    path: ROUTER_UTILS.instructor.root,
+    title: 'sidebar.instructor',
+    icon: 'user',
+    submenu: [
+      {
+        path: `${ROUTER_UTILS.instructor.root}/${ROUTER_UTILS.instructor.listInstructor}`,
+        title: 'sidebar.instructor',
         root: true,
       },
     ]

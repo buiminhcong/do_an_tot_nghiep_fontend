@@ -93,7 +93,7 @@
       </div>
 
       <div class="container" *ngIf="role === 'ACADEMIC_STAFF'">
-        <div *ngIf="menu.title === 'sidebar.scheduler'">
+        <div *ngIf="menu.title === 'sidebar.scheduler' || menu.title ==='sidebar.statictis' ">
           <ng-container *ngIf="!menu.root">
             <li nz-submenu [ngClass]="isCollapsed ? 'ant-menu-item-custom-selected' : ''"
               [nzTitle]="menu.title | translate" [nzIcon]="menu.icon">

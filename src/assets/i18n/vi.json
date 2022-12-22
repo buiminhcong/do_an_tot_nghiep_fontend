@@ -90,6 +90,9 @@
     "unread": "Chưa xem"
   },
   "sidebar": {
+    "statictis": "Thống kê",
+    "roomstatictis": "Thống kê phòng sử dụng",
+    "instructorstatictis": "Thống kê giảng viên dạy",
     "instructorSchedule": "Xem Lịch Dạy",
     "viewschedule": "Xem Thời Khóa Biểu",
     "vendor": "Quản lý nhà cung cấp",
@@ -229,6 +232,7 @@
     },
 
     "instructor": {
+      "numuser": "Số lớp dạy",
       "listInstructor": "Danh sách giảng viên",
       "manager": "Quản lý giảng viên",
       "subject": "Bộ môn",

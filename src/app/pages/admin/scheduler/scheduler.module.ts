@@ -8,6 +8,9 @@ import { TkbComponent } from './tkb/tkb.component';
 import { RoomComponent } from './room/room.component';
 import { CreateUpdateRoomComponent } from './room/create-update-room/create-update-room.component';
 import { ViewscheduleComponent } from './viewschedule/viewschedule.component';
+import { StatictisRoomComponent } from './statictis-room/statictis-room.component';
+import { StatictisInstructorComponent } from './statictis-instructor/statictis-instructor.component';
+import { ViewDetailTeacherComponent } from './viewschedule/view-detail-teacher/view-detail-teacher.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { ViewscheduleComponent } from './viewschedule/viewschedule.component';
     SharedModule
   ],
   declarations: [CoursesComponent, CreateUpdateCourseComponent, 
-    TkbComponent, RoomComponent, CreateUpdateRoomComponent, ViewscheduleComponent
+    TkbComponent, RoomComponent, CreateUpdateRoomComponent,
+     ViewscheduleComponent, StatictisRoomComponent, StatictisInstructorComponent,
+     ViewDetailTeacherComponent
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -9,6 +9,7 @@ import {
   LOCAL_STORAGE,
   SESSION_STORAGE,
 } from '@shared/constants/local-session-cookies.constants';
+import { ROUTER_UTILS } from '@shared/utils/router.utils';
 
 @Component({
   selector: 'app-viewschedule',
@@ -48,6 +49,10 @@ export class ViewscheduleComponent implements OnInit {
         this.schedule = [];
       }
     );
+  }
+
+  detail(id: number){
+    this.router.navigate(['scheduler/'+ ROUTER_UTILS.scheduler.detail, id])
   }
 
 }

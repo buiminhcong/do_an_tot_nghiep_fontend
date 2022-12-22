@@ -24,6 +24,8 @@ import {
   })
   export class ScheduleService extends AbstractService {
     public resourceUrl = "/api/course";
+    public resourceStatisticUrl = "/api/statistic";
+
     public resourceUrlModule = "/api/module";
     constructor(protected http: HttpClient) {
       super(http);
@@ -59,6 +61,14 @@ import {
     delete(id: string): Observable<any> {
       return super.get<any>(`${this.resourceUrl}/remove/${id}`);
     }
+
+    getRoomStatistic(loading = false): Observable<any> {
+      return super.get(`${this.resourceStatisticUrl}/room`);
+  }
+
+  geInstructorStatistic(loading = false): Observable<any> {
+    return super.get(`${this.resourceStatisticUrl}/instructor`);
+}
   
 }
   

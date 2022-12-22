@@ -13,7 +13,7 @@
           [ngClass]="
             isCollapsed ? 'sidebar-logo-default' : 'sidebar-logo-resize'
           "
-          src="https://www.jewelchangiairport.com/content/dam/jca-project/global/logo-dark@3x.png"
+          src="../../../../assets/images/ptit.png"
           alt="logo"
           id="evotek-logo"
         />
@@ -40,7 +40,7 @@
           <div class="col pe-3 text-end">
             <div class="layout-header-information">
               <!-- noti me -->
-              <button
+              <!-- <button
                 class="btn-user ant-btn"
                 nz-dropdown
                 [nzDropdownMenu]="menu2"
@@ -59,7 +59,7 @@
                     style="font-size: 20px; color: #0054a5"
                   ></i>
                 </nz-badge>
-              </button>
+              </button> -->
               <nz-dropdown-menu #menu2="nzDropdownMenu">
                 <div class="dropdown-card-noti">
                   <div class="cart-container-noti">
@@ -104,7 +104,7 @@
               </nz-dropdown-menu>
               <!-- noti me -->
               <nz-divider nzType="vertical"></nz-divider>
-              <button
+              <!-- <button
                 class="btn-language"
                 nz-button
                 nz-popover
@@ -122,7 +122,7 @@
                   src="assets/images/icon/english.png"
                   alt="en"
                 />
-              </button>
+              </button> -->
               <ng-template #languageTemplate>
                 <div class="language-form">
                   <p (click)="onChangeLanguage(VI)">
